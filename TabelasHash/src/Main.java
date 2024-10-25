@@ -1,5 +1,7 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.awt.*;
+import java.awt.print.*;
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -8,28 +10,53 @@ public class Main {
 
         long time = reader.addInTableHash(table_1);
 
+        String report = "Relatório da Tabela Hash 1\n" +
+        "------------------------------------------------\n" +
+        "Tempo de inserção:\n" +
+        "O tempo total para adicionar todas as chaves à Tabela Hash 1 foi de " + time + " milissegundos.\n\n" +
+        "Tempo de busca:\n" +
+        "O tempo necessário para buscar X nomes na Tabela Hash 1 foi de X milissegundos.\n\n" +
+        "Análise de colisões:\n" +
+        "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_1.getNumberOfCollisions() + " colisões.\n\n" +
+        "Distribuição de chaves por posição na tabela:\n" +
+        "------------------------------------------------\n";
 
-        System.out.println("Relatório da Tabela Hash 1\n" +
-                "------------------------------------------------\n" +
-                "Tempo de inserção:\n" +
-                "O tempo total para adicionar todas as chaves à Tabela Hash 1 foi de " + time + " milissegundos.\n\n" +
-                "Tempo de busca:\n" +
-                "O tempo necessário para buscar X nomes na Tabela Hash 1 foi de X milissegundos.\n\n" +
-                "Análise de colisões:\n" +
-                "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_1.getNumberOfCollisions() + " colisões.\n\n" +
-                "Distribuição de chaves por posição na tabela:\n" +
-                "------------------------------------------------\n");
+
+
+        System.out.println(report);
+
+        String keyDistribution = "";
 
         for (int i = 0; i < table_1.getSize(); i++) {
 
             int distribution = table_1.verifyDistribution(i);
 
             if (distribution == 0) {
-                System.out.println("No valor " + i + " não foi armazenada nenhuma chave, logo, não há colisões.");
+                String display = "No valor " + i + " não foi armazenada nenhuma chave, logo, não há colisões.\n";
+                keyDistribution += display;
+                System.out.println(display);
             } else if (distribution == 1) {
-                System.out.println("No valor " + i + " foi armazenada uma chave, logo, não há colisões.");
+                String display = "No valor " + i + " foi armazenada uma chave, logo, não há colisões.\n";
+                keyDistribution += display;
+                System.out.println(display);
             } else {
-                System.out.println("No valor " + i + " foram armazenadas " + distribution + " chaves, com " + (distribution - 1) + " colisão(ões).");
+                String display = "No valor " + i + " foram armazenadas " + distribution + " chaves, com " + (distribution - 1) + " colisão(ões).\n";
+                keyDistribution += display;
+                System.out.println(display);
+            }
+        }
+
+        report += keyDistribution;
+
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new GerarPDF(report));
+
+        boolean doPrint = job.printDialog();
+        if (doPrint) {
+            try {
+                job.print();
+            } catch (PrinterException e) {
+                e.printStackTrace();
             }
         }
 
