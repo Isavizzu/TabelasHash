@@ -17,6 +17,7 @@ public class Reader {
         long startTime = System.currentTimeMillis();
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(this.file))) {
+            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] names = line.split(this.separator);
                 for (String name : names) {

@@ -4,12 +4,10 @@ import javax.swing.*;
 
 public class GerarPDF implements Printable {
     private String text;
-    private String text2;
     private String[] textSeparate;
 
-    public GerarPDF(String report1, String report2){
-        this.text = report1;
-        this.text2 = report2;
+    public GerarPDF(String report){
+        this.text = report;
         SeparateText();
     }
 
@@ -20,11 +18,11 @@ public class GerarPDF implements Printable {
 
     @Override
     public int print(Graphics g, PageFormat pf, int page) throws PrinterException {
-        int linesPerPage = 40; 
+        int linesPerPage = 40; // Estimativa de quantas linhas cabem por página
         int totalPages = (int) Math.ceil((double) textSeparate.length / linesPerPage);
 
         if (page >= totalPages) {
-            return NO_SUCH_PAGE; 
+            return NO_SUCH_PAGE; // Se ultrapassar o número total de páginas
         }
 
         Graphics2D g2d = (Graphics2D) g;
@@ -36,11 +34,9 @@ public class GerarPDF implements Printable {
 
         for (int i = start; i < end; i++) {
             g.drawString(textSeparate[i], 50, y);
-            y += 20; 
+            y += 20; // Espaçamento entre as linhas
         }
 
         return PAGE_EXISTS;
     }
-
-    
 }
