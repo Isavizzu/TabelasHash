@@ -4,12 +4,10 @@ import javax.swing.*;
 
 public class GerarPDF implements Printable {
     private String text;
-    private String text2;
     private String[] textSeparate;
 
-    public GerarPDF(String report1, String report2){
-        this.text = report1;
-        this.text2 = report2;
+    public GerarPDF(String report){
+        this.text = report;
         SeparateText();
     }
 

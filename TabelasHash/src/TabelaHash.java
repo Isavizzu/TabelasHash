@@ -49,16 +49,23 @@ public abstract class TabelaHash {
     }
 
 
-    public boolean search (String name) {
+    public long search(String name) {
+        long startTime = System.currentTimeMillis();
         int value = calculeHash(name);
         if (this.hashTable[value] == null) {
-            return false;
+            System.out.println("Nome não encontrado");
+            long endTime = System.currentTimeMillis();
+            return endTime - startTime;
         }
         for (Object n : this.hashTable[value]) {
             if (n.equals(name)) {
-                return true;
+                System.out.println("Nome encontrado");
+                long endTime = System.currentTimeMillis();
+                return endTime - startTime;
             }
         }
-        return false;
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
     }
+    
 }
