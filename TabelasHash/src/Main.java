@@ -1,8 +1,6 @@
-import java.awt.*;
 import java.awt.print.*;
 import java.util.Scanner;
 
-import javax.swing.*;
 
 public class Main {
 
@@ -30,7 +28,7 @@ public class Main {
         "Tempo de inserção:\n" +
         "O tempo total para adicionar todas as chaves à Tabela Hash 1 foi de " + time + " milissegundos.\n\n" +
         "Tempo de busca:\n" +
-        "O tempo necessário para buscar 3 nomes na Tabela Hash 1 foi de "+ searchTime(table_1) +" milissegundos.\n\n" +
+        "O tempo necessário para buscar 3 nomes na Tabela Hash 1 foi de "+ searchTime(table_1) +" nanossegundos.\n\n" +
         "Análise de colisões:\n" +
         "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_1.getNumberOfCollisions() + " colisões.\n\n" +
         "Distribuição de chaves por posição na tabela:\n" +
@@ -40,11 +38,11 @@ public class Main {
         "Relatório da Tabela Hash 2\n" +
         "------------------------------------------------\n" +
         "Tempo de inserção:\n" +
-        "O tempo total para adicionar todas as chaves à Tabela Hash 1 foi de " + timeHash2 + " milissegundos.\n\n" +
+        "O tempo total para adicionar todas as chaves à Tabela Hash 2 foi de " + timeHash2 + " milissegundos.\n\n" +
         "Tempo de busca:\n" +
-        "O tempo necessário para buscar 3 nomes na Tabela Hash 1 foi de "+ searchTime(table_2) +" milissegundos.\n\n" +
+        "O tempo necessário para buscar 3 nomes na Tabela Hash 2 foi de "+ searchTime(table_2) +" nanossegundos.\n\n" +
         "Análise de colisões:\n" +
-        "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_2.getNumberOfCollisions() + " colisões.\n\n" +
+        "O número total de colisões detectadas na Tabela Hash 2 foi de " + table_2.getNumberOfCollisions() + " colisões.\n\n" +
         "Distribuição de chaves por posição na tabela:\n" +
         "------------------------------------------------\n";
 

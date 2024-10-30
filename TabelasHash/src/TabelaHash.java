@@ -50,21 +50,21 @@ public abstract class TabelaHash {
 
 
     public long search(String name) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         int value = calculeHash(name);
         if (this.hashTable[value] == null) {
             System.out.println("Nome não encontrado");
-            long endTime = System.currentTimeMillis();
+            long endTime = System.nanoTime();
             return endTime - startTime;
         }
         for (Object n : this.hashTable[value]) {
             if (n.equals(name)) {
                 System.out.println("Nome encontrado");
-                long endTime = System.currentTimeMillis();
+                long endTime = System.nanoTime();
                 return endTime - startTime;
             }
         }
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         return endTime - startTime;
     }
     
