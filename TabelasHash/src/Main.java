@@ -12,11 +12,13 @@ public class Main {
         long time3 = table.search("Barbara Johnson");
         return time1 + time2 + time3;
     }
+
+
     public static void main(String[] args) {
 
         Reader reader = new Reader("names.csv");
-        TabelaHash table_1 = new TabelaHash_1(50);
-        TabelaHash table_2 = new TabelaHash_2(50);
+        TabelaHash table_1 = new TabelaHash_1(5000);
+        TabelaHash table_2 = new TabelaHash_2(5000);
 
         long time = reader.addInTableHash(table_1);
 
