@@ -46,56 +46,35 @@ public class Main {
         "Distribuição de chaves por posição na tabela:\n" +
         "------------------------------------------------\n";
 
-        System.out.println(report);
 
-        String keyDistribution = "";
+        int[][] biggest = table_1.getBiggest();
+        String report_biggest = "Os 10 valores com os maiores números de colisões são:\n";
 
-        for (int i = 0; i < table_1.getSize(); i++) {
+        int[] topPositions = biggest[0];
+        int[] topValues = biggest[1];
 
-            int distribution = table_1.verifyDistribution(i);
-
-            if (distribution == 0) {
-                String display = "No valor " + i + " não foi armazenada nenhuma chave, logo, não há colisões.\n";
-                keyDistribution += display;
-                System.out.println(display);
-            } else if (distribution == 1) {
-                String display = "No valor " + i + " foi armazenada uma chave, logo, não há colisões.\n";
-                keyDistribution += display;
-                System.out.println(display);
-            } else {
-                String display = "No valor " + i + " foram armazenadas " + distribution + " chaves, com " + (distribution - 1) + " colisão(ões).\n";
-                keyDistribution += display;
-                System.out.println(display);
-            }
+        for (int i = 0; i < 10; i++) {
+            report_biggest += (i + 1) + " - Valor " + topPositions[i] + " com " + (topValues[i] - 1) + " colisões\n";
         }
 
-        report += keyDistribution;
+        int[][] biggest2 = table_2.getBiggest();
+        String report_biggest2 = "Os 10 valores com os maiores números de colisões são:\n";
 
-        String keyDistribution2 = "";
+        int[] topPositions2 = biggest2[0];
+        int[] topValues2 = biggest2[1];
+
+        for (int i = 0; i < 10; i++) {
+            report_biggest2 += (i + 1) + " - Valor " + topPositions2[i] + " com " + (topValues2[i] - 1) + " colisões\n";
+        }
+
+        System.out.println(report);
+        System.out.println(report_biggest);
 
         System.out.println(report2);
+        System.out.println(report_biggest2);
 
-        for (int i = 0; i < table_2.getSize(); i++) {
-            int distribution = table_2.verifyDistribution(i);
 
-            if (distribution == 0) {
-                String display = "No valor " + i + " não foi armazenada nenhuma chave, logo, não há colisões.\n";
-                keyDistribution2 += display;
-                System.out.println(display);
-            } else if (distribution == 1) {
-                String display = "No valor " + i + " foi armazenada uma chave, logo, não há colisões.\n";
-                keyDistribution2 += display;
-                System.out.println(display);
-            } else {
-                String display = "No valor " + i + " foram armazenadas " + distribution + " chaves, com " + (distribution - 1) + " colisão(ões).\n";
-                keyDistribution2 += display;
-                System.out.println(display);
-            }
-        }
-
-        report2 += keyDistribution2;
-        
-        String finalReport =  report + report2;
+        String finalReport =  report + report_biggest + report2 + report_biggest;
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Você deseja salvar o relatorio?");
