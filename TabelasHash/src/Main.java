@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Main {
 
     public static long searchTime(TabelaHash table){
-        long time1 = table.search("James Brown");
-        long time2 = table.search("David White");
-        long time3 = table.search("Barbara Johnson");
+        long time1 = table.search("Zea");
+        long time2 = table.search("Zelda");
+        long time3 = table.search("Zelma");
         return time1 + time2 + time3;
     }
 
