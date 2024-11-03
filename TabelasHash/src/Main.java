@@ -98,7 +98,7 @@ public class Main {
         String finalReport =  report + report2;
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Você deseja salvar o relatorio?");
+        System.out.println("Você deseja salvar o relatório?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
         int choice = scan.nextInt();
