@@ -4,11 +4,14 @@ public class TabelaHash_2 extends TabelaHash {
         super(size);
     }
 
-    public int calculeHash(String chave) {
-        int valor = 0;
-        for (int i = 0; i < chave.length(); i++) {
-            valor = (valor << 5) - valor + chave.charAt(i);
+    public int calculeHash(String name) {
+        int hash = 0;
+        int fatorPrimo = 37;
+
+        for (int i = 0; i < name.length(); i++) {
+            hash += fatorPrimo * hash + name.charAt(i);
         }
-        return Math.abs(valor % super.getSize()); // Garante índice dentro dos limites
+
+        return Math.abs(hash % super.getSize());
     }
 }

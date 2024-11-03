@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 
@@ -18,6 +21,34 @@ public abstract class TabelaHash {
 
     public int verifyDistribution (int value) {
         return distribution[value];
+    }
+
+
+    public int[][] getBiggest() {
+
+        int[] topPositions = new int[10];
+        int[] topValues = new int[10];
+
+        Arrays.fill(topValues, Integer.MIN_VALUE);
+
+        for (int i = 0; i < distribution.length; i++) {
+            int currentValue = distribution[i];
+
+            for (int j = 0; j < 10; j++) {
+                if (currentValue > topValues[j]) {
+
+                    for (int k = 9; k > j; k--) {
+                        topValues[k] = topValues[k - 1];
+                        topPositions[k] = topPositions[k - 1];
+                    }
+
+                    topValues[j] = currentValue;
+                    topPositions[j] = i;
+                    break;
+                }
+            }
+        }
+        return new int[][]{topPositions, topValues};
     }
 
 
@@ -50,21 +81,21 @@ public abstract class TabelaHash {
 
 
     public long search(String name) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         int value = calculeHash(name);
         if (this.hashTable[value] == null) {
             System.out.println("Nome não encontrado");
-            long endTime = System.currentTimeMillis();
+            long endTime = System.nanoTime();
             return endTime - startTime;
         }
         for (Object n : this.hashTable[value]) {
             if (n.equals(name)) {
                 System.out.println("Nome encontrado");
-                long endTime = System.currentTimeMillis();
+                long endTime = System.nanoTime();
                 return endTime - startTime;
             }
         }
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         return endTime - startTime;
     }
     
