@@ -114,15 +114,16 @@ public abstract class TabelaHash {
                         minValues[k] = minValues[k - 1];
                         minPositions[k] = minPositions[k - 1];
                     }
-
                     minValues[j] = currentValue;
                     minPositions[j] = i;
                     break;
                 }
             }
         }
+
         return new int[][]{minPositions, minValues};
     }
+
 
 
 }
