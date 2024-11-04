@@ -98,5 +98,31 @@ public abstract class TabelaHash {
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
-    
+
+    public int[][] getSmallest() {
+        int[] minPositions = new int[5];
+        int[] minValues = new int[5];
+
+        Arrays.fill(minValues, Integer.MAX_VALUE);
+
+        for (int i = 0; i < distribution.length; i++) {
+            int currentValue = distribution[i];
+
+            for (int j = 0; j < 5; j++) {
+                if (currentValue < minValues[j]) {
+                    for (int k = 4; k > j; k--) {
+                        minValues[k] = minValues[k - 1];
+                        minPositions[k] = minPositions[k - 1];
+                    }
+
+                    minValues[j] = currentValue;
+                    minPositions[j] = i;
+                    break;
+                }
+            }
+        }
+        return new int[][]{minPositions, minValues};
+    }
+
+
 }
