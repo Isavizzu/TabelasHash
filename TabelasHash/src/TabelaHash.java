@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 
-
 public abstract class TabelaHash {
 
     private int size;
@@ -9,16 +8,23 @@ public abstract class TabelaHash {
     private int numberOfCollisions;
     private int[] distribution;
 
-
     public TabelaHash (int size) {
         this.size = size;
         this.hashTable = new LinkedList[size];
         this.distribution = new int[size];
     }
 
+    public int countEmptySlots() {
+        int count = 0;
+        for (int value : distribution) {
+            if (value == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     public int[][] getBiggest() {
-
         int[] topPositions = new int[10];
         int[] topValues = new int[10];
 
@@ -29,7 +35,6 @@ public abstract class TabelaHash {
 
             for (int j = 0; j < 10; j++) {
                 if (currentValue > topValues[j]) {
-
                     for (int k = 9; k > j; k--) {
                         topValues[k] = topValues[k - 1];
                         topPositions[k] = topPositions[k - 1];
@@ -44,21 +49,17 @@ public abstract class TabelaHash {
         return new int[][]{topPositions, topValues};
     }
 
-
-    public int getSize () {
+    public int getSize() {
         return size;
     }
-
 
     public int getNumberOfCollisions() {
         return numberOfCollisions;
     }
 
-
     public abstract int calculeHash (String name);
 
-
-    public void add (String name) {
+    public void add(String name) {
         int value = calculeHash(name);
         this.distribution[value]++;
         if (hashTable[value] == null) {
@@ -71,7 +72,6 @@ public abstract class TabelaHash {
         linkedList.add(name);
         numberOfCollisions++;
     }
-
 
     public long search(String name) {
         long startTime = System.nanoTime();
@@ -91,32 +91,4 @@ public abstract class TabelaHash {
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
-
-    public int[][] getSmallest() {
-        int[] minPositions = new int[5];
-        int[] minValues = new int[5];
-
-        Arrays.fill(minValues, Integer.MAX_VALUE);
-
-        for (int i = 0; i < distribution.length; i++) {
-            int currentValue = distribution[i];
-
-            for (int j = 0; j < 5; j++) {
-                if (currentValue < minValues[j]) {
-                    for (int k = 4; k > j; k--) {
-                        minValues[k] = minValues[k - 1];
-                        minPositions[k] = minPositions[k - 1];
-                    }
-                    minValues[j] = currentValue;
-                    minPositions[j] = i;
-                    break;
-                }
-            }
-        }
-
-        return new int[][]{minPositions, minValues};
-    }
-
-
-
 }

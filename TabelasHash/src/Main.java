@@ -27,6 +27,7 @@ public class Main {
                 "O tempo necessário para buscar 3 nomes na Tabela Hash 1 foi de " + searchTime(table_1) + " nanossegundos.\n\n" +
                 "Análise de colisões:\n" +
                 "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_1.getNumberOfCollisions() + " colisões.\n\n" +
+                "A Tabela Hash 1 tem " + table_1.countEmptySlots() + " valores com 0 chaves.\n\n" +
                 "Distribuição de chaves por posição na tabela:\n" +
                 "------------------------------------------------\n";
 
@@ -39,6 +40,7 @@ public class Main {
                 "O tempo necessário para buscar 3 nomes na Tabela Hash 2 foi de " + searchTime(table_2) + " nanossegundos.\n\n" +
                 "Análise de colisões:\n" +
                 "O número total de colisões detectadas na Tabela Hash 2 foi de " + table_2.getNumberOfCollisions() + " colisões.\n\n" +
+                "A Tabela Hash 2 tem " + table_2.countEmptySlots() + " valores com 0 chaves.\n\n" +
                 "Distribuição de chaves por posição na tabela:\n" +
                 "------------------------------------------------\n";
 
@@ -62,35 +64,12 @@ public class Main {
             report_biggest2 += (i + 1) + " - Valor " + topPositions2[i] + " com " + (topValues2[i] - 1) + " colisões\n";
         }
 
-        int[][] smallest = table_1.getSmallest();
-        String report_smallest = "Os 5 valores com os menores números de colisões na Tabela Hash 1 são:\n";
-
-        int[] minPositions = smallest[0];
-        int[] minValues = smallest[1];
-
-        for (int i = 0; i < 5; i++) {
-            report_smallest += (i + 1) + " - Valor " + minPositions[i] + " com " + (minValues[i] - 1) + " colisões\n";
-        }
-
-        int[][] smallest2 = table_2.getSmallest();
-        String report_smallest2 = "Os 5 valores com os menores números de colisões na Tabela Hash 2 são:\n";
-
-        int[] minPositions2 = smallest2[0];
-        int[] minValues2 = smallest2[1];
-
-        for (int i = 0; i < 5; i++) {
-            report_smallest2 += (i + 1) + " - Valor " + minPositions2[i] + " com " + (minValues2[i] - 1) + " colisões\n";
-        }
-
         System.out.println(report);
         System.out.println(report_biggest);
-        System.out.println(report_smallest);
-
         System.out.println(report2);
         System.out.println(report_biggest2);
-        System.out.println(report_smallest2);
 
-        String finalReport = report + report_biggest + report_smallest + report2 + report_biggest2 + report_smallest2;
+        String finalReport = report + report_biggest + report2 + report_biggest2;
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Você deseja salvar o relatório?");
