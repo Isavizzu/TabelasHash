@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.LinkedList;
 
 
@@ -16,11 +14,6 @@ public abstract class TabelaHash {
         this.size = size;
         this.hashTable = new LinkedList[size];
         this.distribution = new int[size];
-    }
-
-
-    public int verifyDistribution (int value) {
-        return distribution[value];
     }
 
 
