@@ -6,10 +6,9 @@ public class TabelaHash_2 extends TabelaHash {
 
     public int calculeHash(String name) {
         int hash = 0;
-        int primeNumber = 37;
 
         for (int i = 0; i < name.length(); i++) {
-            hash += primeNumber * hash + name.charAt(i);
+            hash += (name.charAt(i) * (i + 1));
         }
 
         return Math.abs(hash % super.getSize());
