@@ -27,8 +27,7 @@ public class Main {
                 "O tempo necessário para buscar 3 nomes na Tabela Hash 1 foi de " + searchTime(table_1) + " nanossegundos.\n\n" +
                 "Análise de colisões:\n" +
                 "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_1.getNumberOfCollisions() + " colisões.\n\n" +
-                "A Tabela Hash 1 tem " + table_1.countEmptySlots() + " valores com 0 chaves.\n\n" +
-                "Distribuição de chaves por posição na tabela:\n" +
+                "Dados importantes:\n" +
                 "------------------------------------------------\n";
 
         String report2 = "------------------------------------------------\n" +
@@ -40,8 +39,7 @@ public class Main {
                 "O tempo necessário para buscar 3 nomes na Tabela Hash 2 foi de " + searchTime(table_2) + " nanossegundos.\n\n" +
                 "Análise de colisões:\n" +
                 "O número total de colisões detectadas na Tabela Hash 2 foi de " + table_2.getNumberOfCollisions() + " colisões.\n\n" +
-                "A Tabela Hash 2 tem " + table_2.countEmptySlots() + " valores com 0 chaves.\n\n" +
-                "Distribuição de chaves por posição na tabela:\n" +
+                "Dados importantes:\n" +
                 "------------------------------------------------\n";
 
         int[][] biggest = table_1.getBiggest();
@@ -64,12 +62,13 @@ public class Main {
             report_biggest2 += (i + 1) + " - Valor " + topPositions2[i] + " com " + (topValues2[i] - 1) + " colisões\n";
         }
 
-        System.out.println(report);
-        System.out.println(report_biggest);
-        System.out.println(report2);
-        System.out.println(report_biggest2);
+        String report_null = "A Tabela Hash 1 tem " + table_1.countEmptySlots() + " valores com 0 chaves.\n\n";
+        String report2_null = "A Tabela Hash 2 tem " + table_2.countEmptySlots() + " valores com 0 chaves.\n\n";
 
-        String finalReport = report + report_biggest + report2 + report_biggest2;
+
+        String finalReport = report + report_biggest + report_null + report2 + report_biggest2 + report2_null;
+
+        System.out.println(finalReport);
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Você deseja salvar o relatório?");
