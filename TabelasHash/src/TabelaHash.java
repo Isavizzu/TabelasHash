@@ -8,11 +8,13 @@ public abstract class TabelaHash {
     private int numberOfCollisions;
     private int[] distribution;
 
+
     public TabelaHash (int size) {
         this.size = size;
         this.hashTable = new LinkedList[size];
         this.distribution = new int[size];
     }
+
 
     public int countEmptySlots() {
         int count = 0;
@@ -49,15 +51,19 @@ public abstract class TabelaHash {
         return new int[][]{topPositions, topValues};
     }
 
+
     public int getSize() {
         return size;
     }
+
 
     public int getNumberOfCollisions() {
         return numberOfCollisions;
     }
 
+
     public abstract int calculeHash (String name);
+
 
     public void add(String name) {
         int value = calculeHash(name);
@@ -72,6 +78,7 @@ public abstract class TabelaHash {
         linkedList.add(name);
         numberOfCollisions++;
     }
+
 
     public long search(String name) {
         long startTime = System.nanoTime();
