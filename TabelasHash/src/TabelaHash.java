@@ -18,8 +18,8 @@ public abstract class TabelaHash {
 
     public int countEmptySlots() {
         int count = 0;
-        for (int value : distribution) {
-            if (value == 0) {
+        for (LinkedList value : hashTable) {
+            if (value == null) {
                 count++;
             }
         }

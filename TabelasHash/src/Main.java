@@ -66,7 +66,7 @@ public class Main {
         String report2_null = "A Tabela Hash 2 tem " + table_2.countEmptySlots() + " valores com 0 chaves.\n\n";
 
 
-        String finalReport = report + report_biggest + report_null + report2 + report_biggest2 + report2_null;
+        String finalReport = report + report_null + report_biggest + report2 +  report2_null + report_biggest2;
 
         System.out.println(finalReport);
 
