@@ -3,11 +3,22 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static long searchTime(TabelaHash table) {
-        long time1 = table.search("Zea");
-        long time2 = table.search("Zelda");
-        long time3 = table.search("Zelma");
-        return time1 + time2 + time3;
+    public static String searchTime(TabelaHash table) {
+        int found = 0;
+        String[] result = table.search("Zea");
+        long time1 = Long.parseLong(result[1]);
+        String cond = result[0];
+        found += cond.equals("true") ? 1 : 0;
+        String[] result2 = table.search("Zara");
+        long time2 = Long.parseLong(result2[1]);
+        String cond2 = result2[0];
+        String[] result3 = table.search("Zarah");
+        found += cond2.equals("true") ? 1 : 0;
+        long time3 = Long.parseLong(result3[1]);
+        String cond3 = result3[0];
+        found += cond3.equals("true") ? 1 : 0;
+        return "O tempo para buscar 3 nomes, cujo " +  found + " de 3 nomes foram encontrados \n"
+                + "foi de " + (time1+time2+time3)+ " nanossegundos.";
     }
 
     public static void main(String[] args) {
@@ -24,7 +35,7 @@ public class Main {
                 "Tempo de inserção:\n" +
                 "O tempo total para adicionar todas as chaves à Tabela Hash 1 foi de " + time + " milissegundos.\n\n" +
                 "Tempo de busca:\n" +
-                "O tempo necessário para buscar 3 nomes na Tabela Hash 1 foi de " + searchTime(table_1) + " nanossegundos.\n\n" +
+                searchTime(table_1) + "\n\n" +
                 "Análise de colisões:\n" +
                 "O número total de colisões detectadas na Tabela Hash 1 foi de " + table_1.getNumberOfCollisions() + " colisões.\n\n" +
                 "Dados importantes:\n" +
@@ -36,7 +47,7 @@ public class Main {
                 "Tempo de inserção:\n" +
                 "O tempo total para adicionar todas as chaves à Tabela Hash 2 foi de " + timeHash2 + " milissegundos.\n\n" +
                 "Tempo de busca:\n" +
-                "O tempo necessário para buscar 3 nomes na Tabela Hash 2 foi de " + searchTime(table_2) + " nanossegundos.\n\n" +
+                searchTime(table_2) + "\n\n" +
                 "Análise de colisões:\n" +
                 "O número total de colisões detectadas na Tabela Hash 2 foi de " + table_2.getNumberOfCollisions() + " colisões.\n\n" +
                 "Dados importantes:\n" +

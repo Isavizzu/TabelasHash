@@ -80,22 +80,22 @@ public abstract class TabelaHash {
     }
 
 
-    public long search(String name) {
+    public String[] search(String name) {
         long startTime = System.nanoTime();
         int value = calculeHash(name);
         if (this.hashTable[value] == null) {
             System.out.println("Nome não encontrado");
             long endTime = System.nanoTime();
-            return endTime - startTime;
+            return new String[]{"false", Long.toString(endTime - startTime)};
         }
         for (Object n : this.hashTable[value]) {
             if (n.equals(name)) {
                 System.out.println("Nome encontrado");
                 long endTime = System.nanoTime();
-                return endTime - startTime;
+                return new String[]{"true", Long.toString(endTime - startTime)};
             }
         }
         long endTime = System.nanoTime();
-        return endTime - startTime;
+        return new String[]{"false", Long.toString(endTime - startTime)};
     }
 }
