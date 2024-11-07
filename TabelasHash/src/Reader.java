@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Reader {
 
-    private String file = "names.csv";
+    private String file;
     private String separator;
 
 
