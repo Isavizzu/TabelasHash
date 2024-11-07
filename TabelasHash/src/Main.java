@@ -66,7 +66,7 @@ public class Main {
         int[] frequenciaColisoes = table_1.calcularFrequenciaColisoes();
         System.out.println("Frequência de colisões na Tabela Hash 1:");
 
-        for (int i = 0; i < frequenciaColisoes.length; i++) {
+        for (int i = 0; i < frequenciaColisoes.length - 1; i++) {
             if (frequenciaColisoes[i] > 0) {
                 report_biggest += "Quantidade de colisões: " + i + " - Quantidade de slots: " + frequenciaColisoes[i];
             }
@@ -85,7 +85,7 @@ public class Main {
         int[] frequenciaColisoes2 = table_2.calcularFrequenciaColisoes();
         System.out.println("Frequência de colisões na Tabela Hash 2:");
 
-        for (int i = 0; i < frequenciaColisoes2.length; i++) {
+        for (int i = 0; i < frequenciaColisoes2.length - 1; i++) {
             if (frequenciaColisoes2[i] > 0) {
                 report_biggest2 += "Quantidade de colisões: " + i + " - Quantidade de slots: " + frequenciaColisoes[i];
             }
