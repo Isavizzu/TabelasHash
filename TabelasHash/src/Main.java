@@ -67,7 +67,7 @@ public class Main {
 
         report_biggest += "Frequência de colisões na Tabela Hash 1:\n";
 
-        for (int i = 0; i < frequenciaColisoes.length - 1; i++) {
+        for (int i = 0; i < frequenciaColisoes.length; i++) {
             if (frequenciaColisoes[i] > 0) {
                 report_biggest += "- " + frequenciaColisoes[i] + " Valores com " + i + " colisões.\n";
             }
@@ -87,7 +87,7 @@ public class Main {
         
         report_biggest2 += "Frequência de colisões na Tabela Hash 2:\n";
 
-        for (int i = 0; i < frequenciaColisoes2.length - 1; i++) {
+        for (int i = 0; i < frequenciaColisoes2.length; i++) {
             if (frequenciaColisoes2[i] > 0) {
                 report_biggest2 += "- " + frequenciaColisoes2[i] + " Valores com " + i + " colisões.\n";
             }
