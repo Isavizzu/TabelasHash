@@ -98,4 +98,26 @@ public abstract class TabelaHash {
         long endTime = System.nanoTime();
         return new String[]{"false", Long.toString(endTime - startTime)};
     }
+
+    public int[] calcularFrequenciaColisoes() {
+        int maxColisoes = 0;
+
+        for (LinkedList lista : hashTable) {
+            if (lista != null && lista.size() > maxColisoes) {
+                maxColisoes = lista.size();
+            }
+        }
+    
+        int[] frequenciaColisoes = new int[maxColisoes];
+    
+        for (LinkedList lista : hashTable) {
+            if (lista != null && lista.size() > 1) { 
+                int colisoes = lista.size() - 1;
+                frequenciaColisoes[colisoes]++;
+            }
+        }
+    
+        return frequenciaColisoes;
+    }
+    
 }

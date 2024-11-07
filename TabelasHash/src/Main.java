@@ -63,6 +63,15 @@ public class Main {
             report_biggest += (i + 1) + " - Valor " + topPositions[i] + " com " + (topValues[i] - 1) + " colisões\n";
         }
 
+        int[] frequenciaColisoes = table_1.calcularFrequenciaColisoes();
+        System.out.println("Frequência de colisões na Tabela Hash 1:");
+
+        for (int i = 0; i < frequenciaColisoes.length; i++) {
+            if (frequenciaColisoes[i] > 0) {
+                report_biggest += "Quantidade de colisões: " + i + " - Quantidade de slots: " + frequenciaColisoes[i];
+            }
+        }
+
         int[][] biggest2 = table_2.getBiggest();
         String report_biggest2 = "Os 10 valores com os maiores números de colisões na Tabela Hash 2 são:\n";
 
@@ -71,6 +80,15 @@ public class Main {
 
         for (int i = 0; i < 10; i++) {
             report_biggest2 += (i + 1) + " - Valor " + topPositions2[i] + " com " + (topValues2[i] - 1) + " colisões\n";
+        }
+
+        int[] frequenciaColisoes2 = table_2.calcularFrequenciaColisoes();
+        System.out.println("Frequência de colisões na Tabela Hash 2:");
+
+        for (int i = 0; i < frequenciaColisoes2.length; i++) {
+            if (frequenciaColisoes2[i] > 0) {
+                report_biggest += "Quantidade de colisões: " + i + " - Quantidade de slots: " + frequenciaColisoes[i];
+            }
         }
 
         String report_null = "A Tabela Hash 1 tem " + table_1.countEmptySlots() + " valores com 0 chaves.\n\n";
