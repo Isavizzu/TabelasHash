@@ -87,7 +87,7 @@ public class Main {
 
         for (int i = 0; i < frequenciaColisoes2.length; i++) {
             if (frequenciaColisoes2[i] > 0) {
-                report_biggest += "Quantidade de colisões: " + i + " - Quantidade de slots: " + frequenciaColisoes[i];
+                report_biggest2 += "Quantidade de colisões: " + i + " - Quantidade de slots: " + frequenciaColisoes[i];
             }
         }
 
