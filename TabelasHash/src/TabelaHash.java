@@ -13,6 +13,7 @@ public abstract class TabelaHash {
         this.size = size;
         this.hashTable = new LinkedList[size];
         this.distribution = new int[size];
+        this.numberOfCollisions = 0;
     }
 
 
